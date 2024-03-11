@@ -12,20 +12,6 @@ arr_sekolah_desa = []
 # ganti pathfile untuk save berkas
 berkas = "D:\\myrepocode\\dapodik-data\\"
 
-# Kode Kecamatan bisa dilihat di file kaltim_norm.json (JSON)
-# atau di file list_kec_kaltim.xlsx (XLSX)
-
-# kode_kec mengikuti 4 angka kode_kab + nomor urut kecamatan
-# Contoh kode_kec untuk Paser = ['160101','160109','160110','160102','160103','160104','160105','160106','160107','160108']
-# Masukkan kode kec di bawah untuk satu kecamatan
-#
-kode_kecamatan_6401 = ['160101','160109','160110','160102','160103','160104','160105','160106','160107','160108']
-kode_jenjang = ["tk", "kb", "sd", "smp", "sma", "smk"]
-
-# Dikerenakan masalah koneksi yang cenderung kurang stabil, disertakan fungsi reconnect() untuk menghubungkan kembali ke URL
-# reconnect() parameter :   - u -> String :: URL yang akan diakses
-#                           - max_att -> Integer :: max percobaan untuk reconnect
-
 def reconnect(u, max_att):
     if max_att == 0:
         print("Nilai minimal untuk max_iter adalah 1.")
@@ -42,12 +28,6 @@ def reconnect(u, max_att):
                     att_iter =+ 1
                 else: # continue atau Isi pesan error atau TO-DO sebagai alternatif
                     print("Gagal : Timeout setelah %s percobaan."%(max_att))
-
-# FUNGSI ambil_sekolah() -> untuk mengambil data sekolah
-# ambil_sekolah() parameters : - kec -> String :: masukkan kode kecamatan yang akan diambil
-#                              - thn -> Integer :: Masukkan tahun ajaran
-#                              - smt -> Integer (1,2) ::                             
-# - j -> String :: jenjang yang akan diambil -> "sd" untuk SD, "smp" untuk SMP, "sma" untuk SMA, dst
 
 def ambil_sekolah(kec, thn, smt, j):
     flag_switcher = 0
@@ -164,4 +144,4 @@ def ambil_sekolah(kec, thn, smt, j):
         sys.exit(0)
 
 # Contoh pemakaian :
-print(ambil_sekolah('160101', 2023, 4, "sd"))
+print(ambil_sekolah('160101', 2023, 1, "sd"))
